@@ -1,6 +1,6 @@
 # DropboxCryptor
 
-Safe file transfer for Dropbox.
+Secure file transfer for Dropbox cloud storage service
 <br></br>
 
 ## About The Project
