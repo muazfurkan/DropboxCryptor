@@ -5,8 +5,6 @@ Secure file transfer for Dropbox cloud storage service
 
 ## About The Project
 
----
-
 This project provides secure file exchange for Dropbox cloud storage service. Project can
 also be used as a team by creating Dropbox app on Dropbox App Console. These operations 
 are over an interface to give the user a good experience. Project tried and tested by 
@@ -14,10 +12,10 @@ performing all the specified operations.
 
 ## Sample Program
 
----
 **Dropbox Login Window :** This window for app_key and app_secret entries. Generating url label with using app_key and app_secret.
 
-![This is an image](testImages/LoginWindow.png) ![This is an image](testImages/TokenUrl.png)
+<a><img src="testImages/LoginWindow.png" height="293" width="400" ></a>
+<a><img src="testImages/TokenUrl.png" height="293" width="400" ></a>
 <br></br>
 
 **Token Check Window :** Checking TOKEN and connect Dropbox account with given TOKEN.
@@ -31,7 +29,6 @@ performing all the specified operations.
 
 ## Features
 
----
 * ### [Dropbox API](operations/dropbox_operations)
     By establishing a two-way connection with the Dropbox API service;
   * [File upload](operations/dropbox_operations/upload_crypted_file.py)
