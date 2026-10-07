@@ -1,6 +1,10 @@
 # DropboxCryptor
 
 Secure file transfer for Dropbox cloud storage service
+
+> **Archived, 2022.** A university project from August 2022, kept for reference and no
+> longer maintained. It targets Python 3.10 and the Dropbox API as it was then, so
+> expect to update dependencies before it runs.
 <br></br>
 
 ## About The Project
@@ -26,6 +30,40 @@ performing all the specified operations.
 **Dropbox Window :** A window for to perform on Dropbox transactions and view files in your account.
 
 ![This is an image](testImages/DropboxWindow.png)
+
+## Running it
+
+Python 3.10. Install the dependencies:
+
+```bash
+pip install dropbox mysql-connector-python customtkinter pyAesCrypt Pillow
+```
+
+**1. Database.** The app needs a MySQL database with two tables. The schema is in the
+docstring at the top of [`database.py`](database.py):
+
+```sql
+CREATE DATABASE DropboxDB;
+CREATE TABLE Account (id int PRIMARY KEY AUTO_INCREMENT, appKeys VARCHAR(50));
+CREATE TABLE File (userId int PRIMARY KEY, FOREIGN KEY(userId) REFERENCES Account(id),
+                   fileName VARCHAR(64), aesKey VARCHAR(64), fileHash VARCHAR(64));
+```
+
+**2. Connection details.** Fill in your own values in
+[`operations/db_operations/connection.py`](operations/db_operations/connection.py) —
+`user`, `passwd` and `database` are committed as asterisks, so the app will not connect
+until you replace them.
+
+**3. Dropbox app.** Create an app on the
+[Dropbox App Console](https://www.dropbox.com/developers/apps) to get an `app_key` and
+`app_secret`. The login window asks for both and builds the OAuth URL from them; you
+paste the resulting token into the token window.
+
+**4. Run.**
+
+```bash
+python main.py
+```
 
 ## Features
 
@@ -101,5 +139,5 @@ same, means this file is safe, thereafter processes continues.
   * https://docs.python.org/3/library/hashlib.html
   <br></br>
 
-* **AES**
-  * https://pycryptodome.readthedocs.io/en/latest/src/cipher/aes.html
+* **AES** — the code uses `pyAesCrypt`
+  * https://github.com/marcobellaccini/pyAesCrypt
